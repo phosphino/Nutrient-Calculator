@@ -1,36 +1,58 @@
-import csv
+from CalcUI import Ui_MainWindow
+import sys
+from PyQt5 import QtCore, QtGui, QtWidgets
+from ChemicalTables import Ions
 from chemspipy import ChemSpider
-from collections import namedtuple
+
 
 cs = ChemSpider('59fce5c4-bef3-4e84-9a72-2a0ef4bc6538')
 
-class Ions:
-    def __init__(self, iontable = 'IonTable.csv', chemicaltable = 'ChemicalTable.csv'):
-        self.ions = {} #Key: Chem Symbol, Value: name, weight
-        self.ionkeys = [] #List of available ions by formula
-        self.chemicalkeys = []#List of available chemicals by formula
-        self.chemicals = {}#Imported CSV of chemicals
+class CalculatorMain(Ui_MainWindow):
+    def __init__(self, mWindow):
+        Ui_MainWindow.__init__(self)
+        self.setupUi(mWindow)
 
-        with open(iontable) as f:
-            table = csv.reader(f)
-            tablelist = list(table)
-            for i in range(1, len(tablelist[0])):
-                symbol = tablelist[1][i]
-                name = tablelist[0][i]
-                weight = tablelist[2][i]
-                items = [name, weight]
-                self.ions[symbol] = items
-            self.ionkeys = list(self.ions.keys())
+        self.Ions = Ions()
 
-        with open(chemicaltable) as f:
-            table = csv.reader(f)
-            skip = next(table)#Skip First Row
-            header = next(table) #Headers are second row
-            Chemical = namedtuple("Chemical", header)
-            for row in table:
-                formula = row[0]
-                self.chemicals[formula] = Chemical(*row)
-            self.chemicalkeys = list(self.chemicals.keys())
+        self.setupTable()
+
+    def setupTable(self):
+        ncolumns = 4
+        nrows = len(self.Ions.chemicalkeys)
+
+        self.ChemicalTable.setRowCount(nrows)
+        self.ChemicalTable.setColumnCount(ncolumns)
+
+        headerkeys = ['Formula','Name','constituent1','constituent2']
+        i, j = 0, 0
+        for chemical in self.Ions.chemicalkeys:
+            j = 0
+            for header in headerkeys:
+                item = getattr(self.Ions.chemicals[chemical], header)
+                qitem = QtWidgets.QTableWidgetItem(item)
+                self.ChemicalTable.setItem(i,j,qitem)
+                j += 1
+            i +=1
+
+        Headeritems = ['Formula','Name','Ion #1','Ion #2']
+        i = 0
+        for item in Headeritems:
+            header = QtWidgets.QTableWidgetItem(item)
+            self.ChemicalTable.setHorizontalHeaderItem(i, header)
+            i += 1
 
 
-a = Ions()
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    mWindow = QtWidgets.QMainWindow()
+
+    prog = CalculatorMain(mWindow)
+    mWindow.show()
+    sys.exit(app.exec_())

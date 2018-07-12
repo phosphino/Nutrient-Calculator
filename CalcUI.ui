@@ -16,13 +16,26 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTableWidget" name="ChemicalTable"/>
+     <widget class="QTableWidget" name="ChemicalTable">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1000</width>
+        <height>16777215</height>
+       </size>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QGroupBox" name="saltDesiredBox">
       <property name="maximumSize">
        <size>
-        <width>150</width>
+        <width>16777215</width>
         <height>16777215</height>
        </size>
       </property>
@@ -35,7 +48,7 @@
      <widget class="QGroupBox" name="saltRequiredBox">
       <property name="maximumSize">
        <size>
-        <width>150</width>
+        <width>16777215</width>
         <height>16777215</height>
        </size>
       </property>
