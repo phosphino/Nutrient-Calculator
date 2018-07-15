@@ -8,17 +8,25 @@ class Ions:
         self.ionkeys = [] #List of available ions by formula
         self.chemicalkeys = []#List of available chemicals by formula
         self.chemicals = {}#Imported CSV of chemicals Value: NamedTuple
+        self.targetions = {}
+        self.targetionkeys = []
 
         with open(iontable) as f:
             table = csv.reader(f)
-            tablelist = list(table)
-            for i in range(1, len(tablelist[0])):
-                symbol = tablelist[1][i]
-                name = tablelist[0][i]
-                weight = tablelist[2][i]
-                items = [name, weight]
-                self.ions[symbol] = items
+            header = next(table)
+            SaltIon = namedtuple("SaltIon", header)
+            SaltIonTarget = namedtuple("SaltIonTarget", header)
+            for row in table:
+                if row == header:
+                    break
+                symbol = row[1]
+                self.ions[symbol] = SaltIon(*row)
+            for row in table:
+                symbol = row[1]
+                self.targetions[symbol] = SaltIonTarget(*row)
             self.ionkeys = list(self.ions.keys())
+            self.targetionkeys = list(self.targetions.keys())
+            print(self.ionkeys,self.targetionkeys)
 
         with open(chemicaltable) as f:
             table = csv.reader(f)

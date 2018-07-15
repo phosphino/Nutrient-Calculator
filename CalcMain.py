@@ -14,9 +14,60 @@ class CalculatorMain(Ui_MainWindow):
 
         self.Ions = Ions()
 
-        self.setupTable()
+        self.chemicalavailability = {}#Keys: Chemical Formula, Values: CheckBox for availability
+        self.startingPPM = {}
+        self.desiredPPM = {}
 
-    def setupTable(self):
+        self.setupTable()
+        self.setupStartingBox()
+        self.setDesiredBox()
+
+    def setDesiredBox(self):
+        mainvbox = QtWidgets.QVBoxLayout()
+        for ions in self.Ions.targetionkeys:
+            hbox = QtWidgets.QHBoxLayout()
+
+            ions = ions.rstrip()
+            qlabel = QtWidgets.QLabel(ions)
+            qlabel.setMaximumWidth(30)
+            qppmdesirededit = QtWidgets.QLineEdit()
+            qppmdesirededit.setMaximumWidth(40)
+            qlabelunits = QtWidgets.QLabel('ppm')
+            self.desiredPPM[ions] = qppmdesirededit
+
+            hbox.addWidget(qlabel)
+            hbox.addWidget(qppmdesirededit)
+            hbox.addWidget(qlabelunits)
+
+            mainvbox.addLayout(hbox)
+
+        self.saltDesiredBox.setLayout(mainvbox)
+
+    def setupRequiredBox(self):
+        mainvbox = QtWidgets.QVBoxLayout()
+
+
+    def setupStartingBox(self):
+        mainvbox = QtWidgets.QVBoxLayout()
+
+        for ions in self.Ions.ionkeys:
+            hbox = QtWidgets.QHBoxLayout()
+
+            qlabel = QtWidgets.QLabel(str(ions).rstrip())
+            qlabel.setMaximumWidth(30)
+            qppmstartedit = QtWidgets.QLineEdit()
+            qppmstartedit.setMaximumWidth(40)
+            qlabelunits = QtWidgets.QLabel('ppm')
+
+            hbox.addWidget(qlabel)
+            hbox.addWidget(qppmstartedit)
+            hbox.addWidget(qlabelunits)
+            mainvbox.addLayout(hbox)
+            self.startingPPM[str(ions)] = qppmstartedit
+
+        self.saltStartingBox.setLayout(mainvbox)
+
+    def setupTable(self):#Sets up the table containing the available salts
         ncolumns = 4
         nrows = len(self.Ions.chemicalkeys)
 
@@ -30,7 +81,13 @@ class CalculatorMain(Ui_MainWindow):
             for header in headerkeys:
                 item = getattr(self.Ions.chemicals[chemical], header)
                 qitem = QtWidgets.QTableWidgetItem(item)
-                self.ChemicalTable.setItem(i,j,qitem)
+                if j == 0:
+                    btn = QtWidgets.QCheckBox(self.ChemicalTable)
+                    btn.setText(item)
+                    self.ChemicalTable.setCellWidget(i,j, btn)
+                    self.chemicalavailability[item] = btn
+                else:
+                    self.ChemicalTable.setItem(i,j,qitem)
                 j += 1
             i +=1
 
@@ -41,12 +98,12 @@ class CalculatorMain(Ui_MainWindow):
             self.ChemicalTable.setHorizontalHeaderItem(i, header)
             i += 1
 
-
-
-
-
-
-
+        self.ChemicalTable.resizeColumnsToContents()
+        columnwidth = 0
+        for i in range(4):
+            columnwidth += self.ChemicalTable.columnWidth(i)
+        columnwidth += self.ChemicalTable.verticalHeader().width()
+        self.ChemicalTable.setMaximumWidth(columnwidth+24)
 
 
 if __name__ == '__main__':
