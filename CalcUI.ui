@@ -45,6 +45,7 @@
       <property name="title">
        <string>Starting Salt ppm Levels</string>
       </property>
+      <zorder>saltDesiredBox</zorder>
      </widget>
     </item>
     <item>
@@ -78,17 +79,31 @@
      <x>0</x>
      <y>0</y>
      <width>1057</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuStarting_Salt">
+     <property name="title">
+      <string>Starting Salt</string>
+     </property>
+     <addaction name="actionLoad_Starting_PPM"/>
+     <addaction name="actionSave_Starting_PPM"/>
+    </widget>
+    <widget class="QMenu" name="menuDesired_Salt">
+     <property name="title">
+      <string>Desired Salt</string>
+     </property>
+     <addaction name="actionLoad_desired_PPM"/>
+     <addaction name="actionSave_desired_PPM"/>
+    </widget>
     <addaction name="actionCalculate"/>
     <addaction name="separator"/>
-    <addaction name="actionLoad_Current_Slats"/>
-    <addaction name="actionLoad_Desired_Salt_Inforamtion"/>
+    <addaction name="menuStarting_Salt"/>
+    <addaction name="menuDesired_Salt"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -101,14 +116,24 @@
     <string>Calculate</string>
    </property>
   </action>
-  <action name="actionLoad_Current_Slats">
+  <action name="actionLoad_Starting_PPM">
    <property name="text">
-    <string>Load Starting Salt Information</string>
+    <string>Load starting PPM</string>
    </property>
   </action>
-  <action name="actionLoad_Desired_Salt_Inforamtion">
+  <action name="actionSave_Starting_PPM">
    <property name="text">
-    <string>Load Desired Salt Inforamtion</string>
+    <string>Save starting PPM</string>
+   </property>
+  </action>
+  <action name="actionLoad_desired_PPM">
+   <property name="text">
+    <string>Load desired PPM</string>
+   </property>
+  </action>
+  <action name="actionSave_desired_PPM">
+   <property name="text">
+    <string>Save desired PPM</string>
    </property>
   </action>
  </widget>

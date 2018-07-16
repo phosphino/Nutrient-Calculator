@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'CalcUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -41,10 +41,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.RequiredList)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1057, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1057, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
+        self.menuStarting_Salt = QtWidgets.QMenu(self.menuFile)
+        self.menuStarting_Salt.setObjectName("menuStarting_Salt")
+        self.menuDesired_Salt = QtWidgets.QMenu(self.menuFile)
+        self.menuDesired_Salt.setObjectName("menuDesired_Salt")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -52,10 +56,22 @@ class Ui_MainWindow(object):
         self.actionCalculate = QtWidgets.QAction(MainWindow)
         self.actionCalculate.setCheckable(False)
         self.actionCalculate.setObjectName("actionCalculate")
-        self.actionLoad_Current_Slats = QtWidgets.QAction(MainWindow)
-        self.actionLoad_Current_Slats.setObjectName("actionLoad_Current_Slats")
+        self.actionLoad_Starting_PPM = QtWidgets.QAction(MainWindow)
+        self.actionLoad_Starting_PPM.setObjectName("actionLoad_Starting_PPM")
+        self.actionSave_Starting_PPM = QtWidgets.QAction(MainWindow)
+        self.actionSave_Starting_PPM.setObjectName("actionSave_Starting_PPM")
+        self.actionLoad_desired_PPM = QtWidgets.QAction(MainWindow)
+        self.actionLoad_desired_PPM.setObjectName("actionLoad_desired_PPM")
+        self.actionSave_desired_PPM = QtWidgets.QAction(MainWindow)
+        self.actionSave_desired_PPM.setObjectName("actionSave_desired_PPM")
+        self.menuStarting_Salt.addAction(self.actionLoad_Starting_PPM)
+        self.menuStarting_Salt.addAction(self.actionSave_Starting_PPM)
+        self.menuDesired_Salt.addAction(self.actionLoad_desired_PPM)
+        self.menuDesired_Salt.addAction(self.actionSave_desired_PPM)
         self.menuFile.addAction(self.actionCalculate)
-        self.menuFile.addAction(self.actionLoad_Current_Slats)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.menuStarting_Salt.menuAction())
+        self.menuFile.addAction(self.menuDesired_Salt.menuAction())
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
@@ -68,8 +84,13 @@ class Ui_MainWindow(object):
         self.saltStartingBox.setTitle(_translate("MainWindow", "Starting Salt ppm Levels"))
         self.saltDesiredBox.setTitle(_translate("MainWindow", "Desired ppm Levels"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.menuStarting_Salt.setTitle(_translate("MainWindow", "Starting Salt"))
+        self.menuDesired_Salt.setTitle(_translate("MainWindow", "Desired Salt"))
         self.actionCalculate.setText(_translate("MainWindow", "Calculate"))
-        self.actionLoad_Current_Slats.setText(_translate("MainWindow", "Load Current Salts"))
+        self.actionLoad_Starting_PPM.setText(_translate("MainWindow", "Load starting PPM"))
+        self.actionSave_Starting_PPM.setText(_translate("MainWindow", "Save starting PPM"))
+        self.actionLoad_desired_PPM.setText(_translate("MainWindow", "Load desired PPM"))
+        self.actionSave_desired_PPM.setText(_translate("MainWindow", "Save desired PPM"))
 
 
 if __name__ == "__main__":
