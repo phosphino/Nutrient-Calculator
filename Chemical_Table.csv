@@ -1,0 +1,30 @@
+﻿Formula,Name,Weight,Solubility g / 100 mL,Constituent
+NH4NO3,Ammonium Nitrate,80.043,192,"2 N, 1 NO3, 1 NH3"
+KNO3,Potassium Nitrate,101.1,13.3,"1 K, 1 N, 1 NO3"
+Ca(NO3)2,Calcium Nitrate,164.1,121.2,"1 Ca, 2 N, 2 NO3"
+(NH4)2SO4,Ammonium Sulfate,132.12,70.6,"2 N, 2 NH3, 1 S, 1 SO4"
+NH4H2PO4,Ammonium Phosphate monobasic,115.02,22.7,"1 N, 1 NH3, 1 P, 1 PO4"
+KH2PO4,Monopotassium phosphate,136.1,33,"1 K, 1 P, 1 PO4"
+KCl,Potassium Chloride,74.55,34.7,"1 K, 1 Cl"
+K2SO4,Potassium Sulfate,174.3,12,"2 K, 1 SO4, 1 S"
+Ca(H2PO4)2,Monocalcium Phosphate,234.05,1.8,"1 Ca, 2 PO4, 2 P"
+MgSO4 * 7 H2O,Magnesium Sulfate,246.47,71,"1 Mg, 1 SO4, 1 S"
+CaCl2 * 2H2O,Calcium Chloride,146.984,74.5,"1 Ca, 2 Cl"
+CaSO4 * 2H2O,Calcium Sulfate,172.2,0.209,"1  Ca, 1 SO4, 1 S"
+H3PO4,Phosphoric Acid,98,548,"1 PO4, 1 P"
+K2O3Si,Potassium silicate,154.28,0.0336,"2 K, 1 SiO2, 1 Si"
+FeSO4 * 7H2O,Ferrous Sulfate,278,15.65,"1 Fe, 1 SO4, 1 S"
+FeCl3 * 6H2O,Ferric Chloride,270.3,,"1 Fe, 3 Cl"
+FeDTPA (sprint 330),Iron Chelate (10%),468.15,,1 Fe
+FeEDTA (sequestrene),Iron Chelate (10.5%),382.1,,1 Fe
+H3BO3,Boric Acid,61.8,6.35,"1 BO3, 1 B"
+Na2B4O7 * 10H2O,Borax,381.4,2.7,"2 BO3, 2 B"
+CuSO4 * 5H2O,Copper sulfate,249.7,31.6,"1 Cu, 1 SO4, 1 S"
+MnSO4 * 4H2O,Manganese Sulfate,223.1,52,"1 Mn, 1 SO4, 1 S"
+MnCl2 * 4H2O ,Manganese Chloride,197.9,151,"1 MnCl, 1 Cl2, 1 2"
+ZnSO4 * 7H2O,Zinc Sulfate,287.6,96.5,"1 Zn, 1 SO4, 1 S"
+ZnCl2,Zinc Chloride,136.3,432,"1 Zn, 2 Cl"
+(NH4)6Mo7O24,Ammonium Molybdate,1163.8,65.3,"6 NH3, 6 N, 7 Mo"
+Na2MoO4,Sodium Molybdate,205.92,84,"2 Na, 1 Mo"
+ZnEDTA,Zinc Chelate,431.6,,1 Zn
+MnEDTA,Manganese Chelate,381.2,,1 Mn
